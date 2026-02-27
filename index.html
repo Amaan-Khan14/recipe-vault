@@ -351,7 +351,7 @@
             container.innerHTML = '<div class="loading">Loading recipes...</div>';
 
             try {
-                const response = await fetch('api_db.php?action=list');
+                const response = await fetch('api.php?action=list');
                 const data = await response.json();
                 displayRecipes(data.recipes);
             } catch (err) {
@@ -371,7 +371,7 @@
             container.innerHTML = '<div class="loading">Searching...</div>';
 
             try {
-                const response = await fetch('api_db.php?action=search&q=' + encodeURIComponent(query));
+                const response = await fetch('api.php?action=search&q=' + encodeURIComponent(query));
                 const data = await response.json();
                 displayRecipes(data.recipes);
             } catch (err) {
@@ -403,7 +403,7 @@
 
         async function viewRecipe(id) {
             try {
-                const response = await fetch('api_db.php?action=get&id=' + id);
+                const response = await fetch('api.php?action=get&id=' + id);
                 const data = await response.json();
 
                 if (data.error) {
@@ -465,7 +465,7 @@
             };
 
             try {
-                const response = await fetch('api_db.php', {
+                const response = await fetch('api.php', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
